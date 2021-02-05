@@ -7,6 +7,7 @@ const typeDefs = gql`
     name: String
     evolutionRequirements: [EvolutionRequirements]
     evolutions: [Evolution]
+    image: String
   }
   type Evolution {
     id: ID
@@ -15,10 +16,17 @@ const typeDefs = gql`
   type EvolutionRequirements {
     amount: Int
   }
+  type Rival {
+    name: String
+    id: ID
+    level: Int
+    difficulty: Int
+  }
 
   type Query {
     starterPokemons: [Pokemon]
     pokemon(id: ID!): Pokemon
+    rival(difficulty: Int!): Rival
     currentPokemon: Pokemon
   }
   type Mutation {
